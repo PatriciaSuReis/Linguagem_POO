@@ -28,7 +28,15 @@ public class Conta {
 	
 	//metodo de saque
 	public void saque (double decrescimo) {
-		saldo = saldo - decrescimo;
+		if((saldo > 0.0) && (decrescimo < saldo)) {
+			saldo = saldo - decrescimo;
+		}
+		else if (decrescimo == 0.0) {
+			System.out.println("Nao pode sacar valor igual a zero!");
+		}
+		else {
+			System.out.println("Nao pode sacar valor superior");
+		}
 	}
 	
 	
