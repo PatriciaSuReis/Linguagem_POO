@@ -46,7 +46,7 @@ public class Gabriel_Patricia {
 	}// FIM METODO 
 		
 	
-	//Implemente um método que retorna a maior e menor altura do grupo.
+	//Implemente um mÃ©todo que retorna a maior e menor altura do grupo.
 	public void menorMaiorAltura(ArrayList<Double> altura) {
 		
 		for(double i : altura) {
@@ -60,7 +60,27 @@ public class Gabriel_Patricia {
 			
 		}// fim for
 		
-	}// fim
+	}// fim questao1_2
+	
+	// media nao esta fun
+	/*public void mediaH (ArrayList<Double> altura, ArrayList<Integer> sexo) {
+		
+		double mediaH = 0.0;
+		int contaH = 0;
+		
+		// popular sexo altura
+		for (int sex : sexo ) {
+			if (sex == 1) {
+				qtdH++;	
+				alturah += alt;
+			}
+			
+		}// fim for
+		
+		mediaHomens = alturah / qtdH; 
+		
+	}// fim questao3
+	*/
 	
 	public void quantadadeM ( ArrayList<Integer> sexo) {
 		for (int sex : sexo) {
@@ -70,27 +90,7 @@ public class Gabriel_Patricia {
 			}
 		}// fim
 		
-	}// fim
-	
-	// media nao esta fun
-	/*public void media (ArrayList<Double> altura, ArrayList<Integer> sexo) {
-		
-		double alturah = 0.0;
-		
-		
-		for (int sex : sexo) {
-			for (double alt : altura) {
-				if (sex == 1) {
-					qtdH++;	
-					alturah += alt;
-				}
-			}// fim
-		}
-		
-		mediaHomens = alturah / qtdH; 
-		
-	}// fim
-	*/
+	}// fim questao4
 	
 	public void exibir() {
 		System.out.println("\nAltura:" + altura);
