@@ -1,0 +1,156 @@
+package conta;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.spi.DirStateFactory.Result;
+
+public class Conta {
+
+	protected String agencia;
+	protected String numeroConta;
+	protected double saldo;
+	protected String nomeTitular;
+	protected String cpf;
+	protected String nomeMae;
+	protected String dataNasc;
+	protected List<String> extrato;
+	
+	public Conta(String agencia, String numeroConta, double saldo, String nomeTitular,
+			String cpf, String nomeMae, String dataNasc) {
+		this.agencia = agencia;
+		this.numeroConta = numeroConta;
+		this.saldo = saldo;
+		this.nomeTitular = nomeTitular;
+		this.cpf = cpf;
+		this.nomeMae = nomeMae;
+		this.dataNasc = dataNasc;
+		extrato = new ArrayList<String>();
+	}
+	
+	//get / set AGENCIA
+	public String getAgencia() {
+		return agencia;
+	}
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
+	}
+	//get / set NumeroConta
+	public String getNumeroConta() {
+		return numeroConta;
+	}
+	public void setNumeroConta(String numeroConta) {
+		this.numeroConta = numeroConta;
+	}
+	//get / set SALDO
+	public double getSaldo() {
+		return saldo;
+	}
+	public void setSaldo(double saldo) {
+		this.saldo = this.getSaldo() + saldo;
+	}
+	//get / set NumeroTitular
+	public String getNomeTitular() {
+		return nomeTitular;
+	}
+	public void setNomeTitular(String nomeTitular) {
+		this.nomeTitular = nomeTitular;
+	}
+	//get / set CPF
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	//get / set NumeroMae
+	public String getNomeMae() {
+		return nomeMae;
+	}
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
+	//get / set DATA NASCIMENTO
+	public String getDataNasc() {
+		return dataNasc;
+	}
+	public void setDataNasc(String dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	
+	/******* REGRAS DE NEGOCIO *******/
+	
+	// DEPOSITAR
+	public void depositar(double valor) {
+		String retorno = "";
+		
+		if(valor > 0) {
+			this.setSaldo(valor);
+			retorno = "Depósito no valor de " + valor + " feito com sucesso!";
+			this.extrato.add(retorno);
+		} else {
+			retorno = "Não é possível depositar valores menor ou igual a 0!";
+		}
+		
+		System.out.println(retorno);
+	}// fim
+	
+	// SAQUE
+	public void sacar(double valor) {
+		//double valorRetirado = 0;
+		
+		if(valor <= this.getSaldo()) {
+			this.saldo = this.getSaldo() - valor;
+			this.extrato.add("Saque no valor de " + valor + " realizado com sucesso!");
+		} else {    
+			System.out.println("Saque insuficiente, não foi possível realizar o saque!");
+		}
+	}// fim SAQUE
+	
+	public void imprimeCliente() {
+		System.out.println("************ Informações do CLiente ************");
+		String imprimir = 	this.getNomeTitular() + 
+							"\n" + this.getCpf() +
+							"\n" + this.getDataNasc() +
+							"\n" + this.getNomeMae() +
+							"\n" + this.getAgencia() +
+							"\n" + this.getNumeroConta() +
+							"\n";
+		
+		System.out.println(imprimir);
+	}// fim imprimeCliente
+	
+	public void mostraExtrato() {
+		System.out.println("\n******************* EXTRATO *******************");
+		
+		for (String elemento : extrato) {
+			System.out.println(elemento);
+		}
+		
+		System.out.printf("\nSaldo Atualizado: %.2f ", this.getSaldo());
+		
+		System.out.println("\n***********************************************");
+	}// fim mostraExtrato
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
